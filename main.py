@@ -22,7 +22,7 @@ import filters
 
 async def while_pass(bot: Bot) -> None:
 
-    # Возможный цикл для тайминговых действий (ежеминутных в данном случае)
+    # (Возможный) цикл для тайминговых действий (ежеминутных в данном случае)
     db_session = bot['db']
     session: AsyncSession
     async with db_session() as session:

@@ -6,6 +6,7 @@ class Bot:
 
 
 class DataBase:
+    # Данные для подключения к бд psql
     host = 'localhost'
     name = ''
     user = 'postgres'
@@ -15,6 +16,7 @@ class DataBase:
 
 
 class Redis:
+    # Данные для подключения к бд redis
     host = 'localhost'
     port = 6379
     db = 7

@@ -15,11 +15,11 @@ async def answer_on_hello(message: types.Message, db_session) -> None:
 
     session: AsyncSession
     async with db_session() as session:
-        # Подключение к пулу бд
+        # Подключение к пулу бд (для возможной работы)
         pass
 
 
 
 def register_messages(dp: Dispatcher) -> None:
-    # Регистрация хенделера с фильтром
+    # Регистрация текст-хендлера (с фильром на кнопку) (работает без состояния)
     dp.register_message_handler(answer_on_hello, filters.CheckButton_hello(), content_types=['text'])

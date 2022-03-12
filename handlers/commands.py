@@ -11,10 +11,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 async def start(message: types.Message, state: FSMContext, db_session) -> None:
 
+    # Завершение (бывшего возможого) состояния
     await state.finish()
 
     session: AsyncSession
     async with db_session() as session:
+        # Добавление пользователя в бд
         await session.merge(Info_users(id_user=message.from_user.id))
         await session.commit()
         
@@ -26,4 +28,5 @@ async def start(message: types.Message, state: FSMContext, db_session) -> None:
 
 
 def register_commands(dp: Dispatcher) -> None:
+    # Регистрация команд-хендлера комманды старт (без фильров) (работает со всеми состояниями)
     dp.register_message_handler(start, commands='start', state='*')
