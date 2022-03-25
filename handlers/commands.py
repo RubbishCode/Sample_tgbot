@@ -20,8 +20,8 @@ async def start(message: types.Message, state: FSMContext, db_session) -> None:
         await session.merge(Info_users(id_user=message.from_user.id))
         await session.commit()
         
-
-    await message.answer('hello', reply_markup=UserKeyboards.main_menu)
+    keyboard = await UserKeyboards.main_menu()
+    await message.answer('hello', reply_markup=keyboard.keyboard)
 
 
 
